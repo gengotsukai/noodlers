@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-xs-12" style="background-color: white;">
+   <%= form_for @shop, url: user_shops_path do |f| %>
+    <div class="field row">
+      <%= f.label :店名 %>
+      <%= f.text_field :shop_name, class: "shop_name" %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :お問い合わせ %> 
+      <%= f.text_field :inquiry, class: "inquiry" %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :住所 %>
+      <%= f.text_field :address, class: "address" %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :予算 %> 
+      <%= f.text_field :price_range, class: "price_range" %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :交通手段 %>
+      <%= f.text_field :transport, class: "transport" %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :支払い手段 %> 
+      <%= f.text_field :payment_method, class: "payment_method" %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :席数 %>
+      <%= f.text_field :seats_number, class: "seats_number" %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :タバコ %> 
+      <%= f.text_field :cigarette, class: "cigarette" %>
+    </div>
+
+    <div class="actions row">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+
+   <% end %>
+ </div>
+</div>

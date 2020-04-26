@@ -1,0 +1,28 @@
+<div class="row">   <!-- ここを追加 -->
+	<div class="col-xs-12">
+		<h2>Shops index</h2>
+		<!--books一覧 -->
+		<table class="table table-hover table-inverse">
+			<thead>
+				<tr>
+					<th>店名</th>
+					<th>いいねの数</th>
+					<th>コメントの数</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @shops.each do |shop| %>
+				<tr>
+					<td><%= shop.shop_name %></td>
+					<td><%= shop.shop_likes.count %></td>
+					<td><%= shop.shop_comments.count %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<%= link_to "店を新たに登録", new_user_shop_path, method: :get, class: "btn btn-primary" %>
+
+	</div>
+</div>
+</div>

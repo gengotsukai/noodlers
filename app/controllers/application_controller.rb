@@ -18,7 +18,7 @@ protect_from_forgery with: :exception
   	case resource
   	when Admin
   		new_admin_session_path
-  	when User
+  	when :user #ここは、userのclassではなく、シンボルユーザーの値を受け取る
   		new_user_session_path
   	end
   end
