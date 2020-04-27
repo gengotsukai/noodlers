@@ -1,0 +1,31 @@
+<div class="row">
+
+<h2>User info</h2>
+
+<%= form_for(@user) do |f| %>
+
+<div class="field">
+	<%= f.label :nickname %>
+	<%= f.text_field :nickname, class: "nickname" %>
+</div>
+
+<div class="field">
+	<%= f.label :image %>
+	<%= f.attachment_field :profile_image, class: "user_image" %>
+</div>
+
+<div class="field">
+	<%= f.label :introduction %>
+	<%= f.text_area :introduction, class: "introduction" %>
+</div>
+
+<div class="actions">
+	<%= f.submit '変更する', class: 'btn btn-primary btn-block' %>
+	<%= link_to "退会する",user_confirm_path, class: 'btn btn-danger btn-md' %>
+</div>
+
+
+
+<% end %>
+</div>
+</div>

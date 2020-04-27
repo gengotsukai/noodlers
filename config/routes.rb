@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   namespace :user do
     root to: 'users#top' #トップ画面
     get 'about' => 'users#about' #アバウトページ
+    get 'confirm' => 'users#confirm' #退会確認ページ
+    get 'users/:id/follows' => 'relationships#follows', as: "follows"
+    get 'users/:id/followers' => 'relationships#followers', as: "followers"
     resources :users, only: [:index, :show, :edit, :update]
     resources :relationships, only: [:create, :destroy]
     resources :genres, only: [:index, :show, :edit, :update, :create, :destroy]

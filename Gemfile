@@ -63,5 +63,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+# 画像取り込み
+
+gem 'refile-mini_magick'
+# サイズ調整、画像加工
+
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'

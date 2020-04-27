@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_105017) do
+ActiveRecord::Schema.define(version: 2020_04_27_082308) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 2020_04_24_105017) do
     t.integer "follow_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "shop_comments", force: :cascade do |t|
@@ -87,6 +90,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_105017) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_status"
+    t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
