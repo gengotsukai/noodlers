@@ -1,44 +1,110 @@
 <div class="row">
   <div class="main col-md-offset-1 col-md-6">
+    <h2>Shop Show</h2>
     <div class="table-responsive">
       <table class="table table-bordered">
         <tr>
-          <th width="100"></th>
+          <td>
+            <%= link_to user_user_path(@myshop.user) do %>
+            <%= image_tag @myshop.user.image.url %><br>
+            <%= @myshop.user.nickname %>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <th width="100">ジャンル名</th>
           <td><%= @myshop.genre.genre_name %></td>
         </tr>
+
         <tr>
           <th width="100">店名</th>
           <td><%= @myshop.shop_name %></td>
         </tr>
+
         <tr>
           <th width="100">お問い合わせ</th>
           <td><%= @myshop.inquiry %></td>
         </tr>
+
         <tr>
           <th width="100">住所</th>
           <td><%= @myshop.address %></td>
         </tr>
+
         <tr>
           <th width="100">予算</th>
           <td><%= @myshop.price_range %></td>
         </tr>
+
         <tr>
           <th width="100">交通手段</th>
           <td><%= @myshop.transport %></td>
         </tr>
+
         <tr>
           <th width="100">支払い手段</th>
           <td><%= @myshop.payment_method %></td>
         </tr>
+
         <tr>
           <th width="100">席数</th>
           <td><%= @myshop.seats_number %></td>
         </tr>
+
         <tr>
           <th width="100">タバコ</th>
           <td><%= @myshop.cigarette %></td>
         </tr>
+
+        <tr>
+          <td>
+           <% if @myshop.favorited_by?(current_user) %>
+               <%= link_to user_shop_shop_likes_path(@myshop), method: :delete do %>
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <%= @myshop.shop_likes.count %> いいね
+               <% end %>
+           <% else %>
+               <%= link_to user_shop_shop_likes_path(@myshop), method: :post do %>
+                  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                  <%= @myshop.shop_likes.count %> いいね
+               <% end %>
+           <% end %>
+          </td>
+          <td>コメント数: <%= @myshop.shop_comments.count %></td>
+          <% if @user == current_user %>
+          <td><%= link_to "Edit",edit_user_shop_path(@myshop.id), class: "btn-sm btn-success edit_book_#{@myshop.id}" %></td>
+          <td><%= link_to "Destroy",user_shop_path(@myshop.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@myshop.id}" %></td>
+          <% end %>
+        </tr>
       </table>
+
+      <table class="table">
+        <% @myshop.shop_comments.each do |shop_comment| %>
+         <tr>
+          <td>
+            <%= image_tag @myshop.user.image.url %><br>
+            <%= @myshop.user.nickname %>
+          </td>
+          <td><%= shop_comment.opinion %></td>
+            <% if shop_comment.user == current_user %>
+              <td><%= link_to "Destroy",user_shop_shop_comments_path(shop_comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+         </tr>
+        <% end %>
+      </table>
+
+      <%= form_for @shop_comment, url: user_shop_shop_comments_path(@myshop.id), method: :post do |f| %>
+          <div class="row">
+              <div class="col-sm-12">
+                  <%= f.text_area :opinion, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+              </div>
+          </div>
+          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+      <% end %>
+
     </div>
   </div>
 </div>

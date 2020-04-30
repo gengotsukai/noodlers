@@ -7,9 +7,9 @@ protect_from_forgery with: :exception
   def after_sign_in_path_for(resource)
   	case resource
   	when Admin
-  		admin_admins_top_path
+  		home_about_path
   	when User
-  		user_root_path
+  		home_about_path
   	end
   end
 

@@ -15,14 +15,14 @@
      <div class="nav navbar-nav navbar-right">
      <!--if文でサインインとアウト時の表示を変更-->
       <% if user_signed_in? %>
-        <li><%= link_to ' Noodlersについて', user_about_path %></li>
-        <li><%= link_to ' マイページ', user_user_path(current_user) %></li>
+        <li><%= link_to ' Noodlersについて', home_about_path %></li>
+        <li><%= link_to ' マイページ', edit_user_user_path(current_user) %></li>
         <li><%= link_to ' ユーザー一覧', user_users_path %></li>
         <li><%= link_to ' 店の投稿一覧', user_shops_path(current_user) %></li>
         <li><%= link_to ' ジャンル一覧', user_genres_path(current_user) %></li>
         <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to ' Noodlersについて', user_about_path %></li>
+        <li><%= link_to ' Noodlersについて', home_about_path %></li>
         <li><%= link_to ' 新規登録', new_user_registration_path %></li>
         <li><%= link_to ' ログイン', new_user_session_path %></li>
       <% end %>

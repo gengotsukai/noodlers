@@ -12,10 +12,14 @@ Rails.application.routes.draw do
  	}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+
+  # ウェブサイトのtopページ
+  root to: 'homes#top'
+  get 'home/about' => 'homes#about'
+
+
   # ユーザー側のルーティング
   namespace :user do
-    root to: 'users#top' #トップ画面
-    get 'about' => 'users#about' #アバウトページ
     get 'confirm' => 'users#confirm' #退会確認ページ
     get 'users/:id/follows' => 'relationships#follows', as: "follows"
     get 'users/:id/followers' => 'relationships#followers', as: "followers"

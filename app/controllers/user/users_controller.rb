@@ -16,7 +16,7 @@ class User::UsersController < ApplicationController
   def edit
   	@user = User.find(params[:id])
     if current_user.id != @user.id
-      redirect_to user_user_path(current_user.id)
+      redirect_to home_about_path
     end
   end
 
@@ -26,16 +26,30 @@ class User::UsersController < ApplicationController
 
   def update
   	@user = User.find(params[:id])
-  	if @user.update(user_params)
-  		redirect_to user_user_path(@user.id), notice: "successfully updated user!"
-  	else
-  		render :edit
-  	end
+
+    #編集しようとしているユーザーが現在ログインしているユーザーと同じかどうかの確認
+    if current_user == @user
+
+      if @user.update(user_params)
+        flash.now[:success] = 'ユーザー情報の編集に成功しました。'
+        render :edit
+      else
+        flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+  		  render :edit
+      end
+
+    else
+      redirect_to home_about_path
+    end
+  end
+
+  def destroy
+    
   end
 
   private
   def user_params
-  	params.require(:user).permit(:nickname, :introduction, :profile_image_id)
+  	params.require(:user).permit(:nickname, :introduction, :image)
   end
 
   #url直接防止　メソッドを自己定義してbefore_actionで発動。

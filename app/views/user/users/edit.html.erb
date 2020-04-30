@@ -2,30 +2,34 @@
 
 <h2>User info</h2>
 
-<%= form_for(@user) do |f| %>
+<%= form_for @user, url: user_user_path(current_user), method: :patch do |f| %>
 
-<div class="field">
-	<%= f.label :nickname %>
-	<%= f.text_field :nickname, class: "nickname" %>
-</div>
+	<div class="field">
+		<%= f.label :nickname, "ニックネーム" %>
+		<%= f.text_field :nickname, class: "nickname" %>
+	</div>
 
-<div class="field">
-	<%= f.label :image %>
-	<%= f.attachment_field :profile_image, class: "user_image" %>
-</div>
+	<div class="field">
+		<% if @user.image? %>
+			<%= image_tag @user.image.url %>
+		<% else %>
+			<%= image_tag("/images/no_image.jpg") %>
+		<% end %>
+		<%= f.label :image, "ユーザー画像" %>
+		<%= f.file_field :image %>
+	</div>
 
-<div class="field">
-	<%= f.label :introduction %>
-	<%= f.text_area :introduction, class: "introduction" %>
-</div>
+	<div class="field">
+		<%= f.label :introduction, "自己紹介文" %>
+		<%= f.text_area :introduction, class: "introduction" %>
+	</div>
 
-<div class="actions">
-	<%= f.submit '変更する', class: 'btn btn-primary btn-block' %>
-	<%= link_to "退会する",user_confirm_path, class: 'btn btn-danger btn-md' %>
-</div>
-
-
+	<div class="actions">
+		<%= f.submit '変更を反映する', class: 'btn btn-primary btn-block' %>
+	</div>
 
 <% end %>
-</div>
+
+<%= link_to "退会する", user_confirm_path, class: 'btn btn-danger btn-md' %>
+
 </div>

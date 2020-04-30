@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :shops, dependent: :destroy
   has_many :shop_likes, dependent: :destroy
   has_many :shop_comments, dependent: :destroy
-
+  mount_uploader :image, ImageUploader
 
   def follow(other_user)
     unless self == other_user

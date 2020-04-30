@@ -5,6 +5,7 @@ class User::GenresController < ApplicationController
 	end
 
 	def edit
+		@genres = Genre.all
 		@genre = Genre.find(params[:id])
 		@shops = Shop.all
 	end
