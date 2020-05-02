@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: {
-	  sessions:      'admins/sessions',
-	  passwords:     'admins/passwords',
-	  registrations: 'admins/registrations'
-	}
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   devise_for :users, controllers: {
 	  sessions:      'users/sessions',
@@ -32,14 +29,4 @@ Rails.application.routes.draw do
     	resource :shop_comments, only: [:create, :destroy]
     end
   end
-
-  # 管理者側のルーティング
-  namespace :admin do
-    get 'admins/top' => 'admins#top' #管理者トップページ
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
-    resources :shops do
-    	resource :shop_comments, only: [:create, :destroy]
-    end
-  end
 end
-

@@ -62,6 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'activeadmin'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 # 画像取り込み

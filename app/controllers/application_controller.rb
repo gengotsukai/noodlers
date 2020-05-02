@@ -6,9 +6,11 @@ protect_from_forgery with: :exception
   protected
   def after_sign_in_path_for(resource)
   	case resource
-  	when Admin
-  		home_about_path
-  	when User
+    #ここは、admin_userのclassではなく、シンボルadmin_userの値を受け取る
+  	when :admin_user
+  		admin_root_path
+    #ここは、userのclassではなく、シンボルuserの値を受け取る
+  	when :user
   		home_about_path
   	end
   end
@@ -16,9 +18,11 @@ protect_from_forgery with: :exception
   #sign_out後のredirect先変更する。
   def after_sign_out_path_for(resource)
   	case resource
-  	when Admin
-  		new_admin_session_path
-  	when :user #ここは、userのclassではなく、シンボルユーザーの値を受け取る
+    #ここは、admin_userのclassではなく、シンボルadmin_userの値を受け取る
+    when :admin_user
+     new_admin_user_session_path
+    #ここは、userのclassではなく、シンボルuserの値を受け取る
+  	when :user
   		new_user_session_path
   	end
   end
