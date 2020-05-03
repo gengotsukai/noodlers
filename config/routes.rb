@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get 'confirm' => 'users#confirm' #退会確認ページ
     get 'users/:id/follows' => 'relationships#follows', as: "follows"
     get 'users/:id/followers' => 'relationships#followers', as: "followers"
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :relationships, only: [:create, :destroy]
     resources :genres, only: [:index, :show, :edit, :update, :create, :destroy]
     resources :user_genres, only: [:create, :destroy]

@@ -18,7 +18,11 @@
 	<tbody>
 		<% @users.each do |user| %>
 		<tr>
-			
+			<td>
+				<%= link_to user_user_path(user) do %>
+				 <%= render 'shared/userimage', user: user %>
+				<% end %>
+			</td>
 			<td><%= user.nickname%></td>
 			<td>
 				フォロー数: <%= user.followings.count %>

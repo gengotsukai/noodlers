@@ -44,7 +44,9 @@ class User::UsersController < ApplicationController
   end
 
   def destroy
-    
+    @user = User.find(params[:id])
+    @user.discard
+    redirect_to new_user_session_path, notice: "退会しました。"
   end
 
   private

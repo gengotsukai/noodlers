@@ -4,26 +4,21 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 protect_from_forgery with: :exception
 
   protected
+  #sign_in後のredirect先変更する。
   def after_sign_in_path_for(resource)
-  	case resource
-    #ここは、admin_userのclassではなく、シンボルadmin_userの値を受け取る
-  	when :admin_user
+    if resource.class == AdminUser
   		admin_root_path
-    #ここは、userのclassではなく、シンボルuserの値を受け取る
-  	when :user
+  	else
   		home_about_path
   	end
   end
 
   #sign_out後のredirect先変更する。
   def after_sign_out_path_for(resource)
-  	case resource
-    #ここは、admin_userのclassではなく、シンボルadmin_userの値を受け取る
-    when :admin_user
-     new_admin_user_session_path
-    #ここは、userのclassではなく、シンボルuserの値を受け取る
-  	when :user
-  		new_user_session_path
+  	if resource == :admin_user
+      new_admin_user_session_path
+  	else
+    	new_user_session_path
   	end
   end
 

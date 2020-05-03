@@ -6,6 +6,7 @@
 <table class="table table-hover table-inverse">
 	<thead>
 		<tr>
+			<th></th>
 			<th>店名</th>
 			<th>感想</th>
 		</tr>
@@ -14,6 +15,7 @@
 	<tbody>
 		<% @shops.each do |shop| %>
 		<tr>
+			<td><%= render 'shared/userimage', user: @user %></td>
 			<td><%= shop.shop_name %></td>
 			<td><%#= shop.shop_comment.opinion %></td>
 		</tr>
