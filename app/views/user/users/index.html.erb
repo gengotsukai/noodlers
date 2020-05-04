@@ -25,10 +25,10 @@
 			</td>
 			<td><%= user.nickname%></td>
 			<td>
-				フォロー数: <%= user.followings.count %>
+				フォロー数: <%= link_to user.followings.count, user_follows_path(user) %>
 			</td>
 			<td>
-				フォロワー数: <%= user.followers.count %>
+				フォロワー数: <%= link_to user.followings.count, user_followers_path(user) %>
 			</td>
 			<td>
 				<%= render 'user/relationships/follow_button', user: user %>

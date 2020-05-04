@@ -18,7 +18,7 @@
 	<tbody>
 		<% @users.each do |user| %>
 		<tr>
-			<td><%= image_tag user.image.url %></td><br>
+			<td><%= render 'shared/userimage', user: user %></td><br>
 			<td><%= user.nickname%></td>
 			<td>
 				フォロー数: <%= user.followings.count %>

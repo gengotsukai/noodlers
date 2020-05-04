@@ -2,6 +2,7 @@ class User::ShopsController < ApplicationController
 	 def index
     	@shops = Shop.all
     	@shop = Shop.new
+      @user = User.find(params[:id])
 	 end
 
    def show
@@ -9,6 +10,7 @@ class User::ShopsController < ApplicationController
       @shop = Shop.new
       @user = @myshop.user
       @shop_comment = ShopComment.new
+      @myuser = User.find(params[:id])
 	 end
 
    def edit

@@ -12,6 +12,13 @@ class User < ApplicationRecord
   has_many :shop_likes, dependent: :destroy
   has_many :shop_comments, dependent: :destroy
   mount_uploader :image, ImageUploader
+  #user modelでdiscardというgemを使用可能にするための記述
+  include Discard::Model
+
+  #ユーザーが既に退会しているか・退会していないかを判断し、deviseに伝えるための関数（この関数はdeviseによって呼び出されるもの）
+  def active_for_authentication?
+    super && !discarded_at
+  end
 
   def follow(other_user)
     unless self == other_user

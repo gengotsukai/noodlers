@@ -18,7 +18,7 @@
 				<tr>
 					<td>
 						<%= link_to user_user_path(shop.user) do %>
-						<%= image_tag shop.user.image.url %>
+						<%= render 'shared/userimage', user: @user %>
 						<%= shop.user.nickname %>
 						<% end %>
 					</td>
