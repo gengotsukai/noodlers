@@ -1,16 +1,10 @@
-<div class="row">
-	<div class="col-xs-12">
-		<p>検索</p>
-		<%= form_tag(user_shops_search_path,:method => 'get') do %>
-  			<%= text_field_tag :search %>
-  			<%= submit_tag 'Search', :shop_name => nil %>
-		<% end %>
+<p>検索</p>
+<%= form_tag(user_shops_search_path,:method => 'get') do %>
+ 	<%= text_field_tag :search %>
+  	<%= submit_tag 'Search', :shop_name => nil %>
+<% end %>
 
-
-		<%= link_to "店を新たに登録", new_user_shop_path, method: :get, class: "btn btn-primary" %>
-		<h2>Shops index</h2>
-		<!--shops一覧 -->
-		<table class="table table-hover table-inverse">
+<table class="table table-hover table-inverse">
 			<thead>
 				<tr>
 					<th>投稿者</th>
@@ -25,7 +19,7 @@
 				<tr>
 					<td>
 						<%= link_to user_user_path(shop.user) do %>
-						<%= render 'shared/userimage', user: shop.user %>
+						<%#= render 'shared/userimage', user: @user %>
 						<%= shop.user.nickname %>
 						<% end %>
 					</td>
@@ -48,7 +42,3 @@
 				<% end %>
 			</tbody>
 		</table>
-
-	</div>
-</div>
-</div>

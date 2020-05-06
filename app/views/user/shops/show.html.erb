@@ -4,10 +4,11 @@
     <div class="table-responsive">
       <table class="table table-bordered">
         <tr>
+          <th width="100">投稿者</th>
           <td>
-            <%= link_to user_user_path(@myshop.user) do %>
-            <%= render 'shared/userimage', user: @myuser %><br>
-            <%= @myshop.user.nickname %>
+            <%= link_to user_user_path(@user) do %>
+            <%= render 'shared/userimage', user: @user %><br>
+            <%= @user.nickname %>
             <% end %>
           </td>
         </tr>
@@ -72,19 +73,20 @@
            <% end %>
           </td>
           <td>コメント数: <%= @myshop.shop_comments.count %></td>
-          <% if @user == current_user %>
-          <td><%= link_to "Edit",edit_user_shop_path(@myshop.id), class: "btn-sm btn-success edit_book_#{@myshop.id}" %></td>
-          <td><%= link_to "Destroy",user_shop_path(@myshop.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@myshop.id}" %></td>
-          <% end %>
         </tr>
       </table>
+
+      <% if @user == current_user %>
+        <%= link_to "Edit",edit_user_shop_path(@myshop.id), class: "btn-sm btn-success edit_book_#{@myshop.id}" %>
+        <%= link_to "Destroy",user_shop_path(@myshop.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@myshop.id}" %>
+      <% end %>
 
       <table class="table">
         <% @myshop.shop_comments.each do |shop_comment| %>
          <tr>
           <td>
-            <%= image_tag @myshop.user.image.url %><br>
-            <%= @myshop.user.nickname %>
+            <%= render 'shared/userimage', user: @user %><br>
+            <%= @user.nickname %>
           </td>
           <td><%= shop_comment.opinion %></td>
             <% if shop_comment.user == current_user %>

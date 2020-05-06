@@ -10,7 +10,7 @@ class User::ShopCommentsController < ApplicationController
 		@shopcomment = ShopComment.find(params[:shop_id])
 		shop = @shopcomment.shop
   		@shopcomment.destroy
-  		redirect_to user_shop_path(user.id)
+  		redirect_to user_shop_path(shop.id)
 	end
 	private
 	def shop_comment_params

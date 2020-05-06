@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # ユーザー側のルーティング
   namespace :user do
     get 'confirm' => 'users#confirm' #退会確認ページ
+    get 'shops/search' => 'shops#search'
     get 'users/:id/follows' => 'relationships#follows', as: "follows"
     get 'users/:id/followers' => 'relationships#followers', as: "followers"
     resources :users, only: [:index, :show, :edit, :update, :destroy]

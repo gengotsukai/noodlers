@@ -6,4 +6,11 @@ class Shop < ApplicationRecord
 	def favorited_by?(user)
 		shop_likes.where(user_id: user.id).exists?
     end
+    def self.search(search)
+      if search
+        Shop.where(['shop_name LIKE ?', "%#{search}%"])
+      else
+        Shop.all
+      end
+    end
 end

@@ -1,8 +1,11 @@
 class User::ShopsController < ApplicationController
-	 def index
+	 def search
+    @shops = Shop.search(params[:search])
+   end
+
+   def index
     	@shops = Shop.all
     	@shop = Shop.new
-      @user = User.find(params[:id])
 	 end
 
    def show
@@ -10,7 +13,6 @@ class User::ShopsController < ApplicationController
       @shop = Shop.new
       @user = @myshop.user
       @shop_comment = ShopComment.new
-      @myuser = User.find(params[:id])
 	 end
 
    def edit
@@ -35,6 +37,21 @@ class User::ShopsController < ApplicationController
   			 render :index
   		end
   	end
+
+    def update
+      @shop = Shop.find(params[:id])
+      if @shop.update(shop_params)
+        redirect_to user_shop_path(@shop.id), flash: { notice: "店の投稿の更新が無事に出来ました！" }
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      @shop = Shop.find(params[:id])
+      @shop.destroy
+      redirect_to user_shops_path, flash: { notice: "店の投稿を削除しました！" }
+    end
 
     def shop_params
   		params.require(:shop).permit(:shop_name, :genre_id, :inquiry, :address, :price_range, :transport, :payment_method, :seats_number, :cigarette)
