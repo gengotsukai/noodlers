@@ -21,36 +21,90 @@
             'use strict';
 
             var target = document.getElementById('target');
-            var geocoder = new google.maps.Geocoder();
-            //Geocoding: 住所を緯度・経度に変換する
-            //Reverse Geocoding　緯度・経度を住所に変換する
-            //searchをクリックしたときの処理
-            document.getElementById('search').addEventListener('click', function() {
-                geocoder.geocode({
-                    address: document.getElementById('address').value
-                }, function(results, status) {
-                    if (status !== 'OK') {
-                        alert('Failed: ' + status);
-                        return;
-                    }
-                    // results[0].geometry.location
-                    if (results[0]) {
-                        new google.maps.Map(target, {
-                            center: results[0].geometry.location,
-                            zoom: 15
-                        });
-                    } else {
-                        alert('No results found');
-                        return;
-                    }
-                });
-            });
-
-            //var map;
-            //var tokyo = {lat: 35.681167, lng: 139.767052};
+            var map;
+            var tokyo = {lat: 35.681167, lng: 139.767052};
+            var search_location;
+            var service;
             //var infoWindow;
             //var marker;
+            var geocoder = new google.maps.Geocoder();
 
+            // Geolocation
+            //ブラウザがgeolocationに対応しているかどうかの確認
+                if (!navigator.geolocation) {
+                    alert('Geolocation not supported');
+                    return;
+                }
+                //位置情報を取得するための記述
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    new google.maps.Map(target, {
+                        center: {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        },
+                        zoom: 15
+                    });
+                }, function() {
+                    alert('Geolocation failed!');
+                    return;
+                });
+
+            //Geocoding: 住所を緯度・経度に変換する
+                //searchをクリックしたときの処理
+                document.getElementById('address_search').addEventListener('click', function() {
+                    geocoder.geocode({
+                        address: document.getElementById('address').value
+                    }, function(results, status) {
+                        if (status !== 'OK') {
+                            alert('Failed: ' + status);
+                            return;
+                        }
+                        // results[0].geometry.location
+                        if (results[0]) {
+                            search_location = results[0].geometry.location
+                            map = new google.maps.Map(target, {
+                                center: results[0].geometry.location,
+                                zoom: 15
+                            });
+                       } else {
+                            alert('No results found');
+                            return;
+                        }
+                    });
+                });
+
+            //Reverse Geocoding　緯度・経度を住所に変換する
+                 map = new google.maps.Map(target, {
+                    center: {
+                        lat: 35.681167,
+                        lng: 139.767052
+                    },
+                    zoom: 15
+                 });
+                 map.addListener('click', function (e) {
+                    geocoder.geocode({
+                        location: e.latLng
+                    }, function(results, status) {
+                        if (status !== 'OK') {
+                            alert('Failed: ' + status);
+                            return;
+                        }
+                        // results[0].formatted_address
+                        if (results[0]) {
+                            new google.maps.Marker({
+                                position: e.latLng,
+                              map: map,
+                                title: results[0].formatted_address,
+                                animation: google.maps.Animation.DROP
+                            });
+                        } else {
+                            alert('No results found');
+                            return;
+                        }
+                    });
+                 });
+
+            //mapの表示の仕方の記述
             //map = new google.maps.Map(target, {
                 //center: tokyo,
                 //世界地図レベル
@@ -70,6 +124,33 @@
                 //クリックイベントを無効にする
                 //clickableIcons: false
             //});
+
+            //Places APIの記述
+                document.getElementById('facility_search').addEventListener('click', function() {
+                    service = new google.maps.places.PlacesService(map);
+                    service.nearbySearch({
+                        location: search_location,
+                        radius: '500',
+                        name: document.getElementById('keyword').value
+                    }, function(results, status) {
+                        //loop用の変数
+                        var i;
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                           for (i = 0; i < results.length; i++) {
+                                new google.maps.Marker({
+                                    map: map,
+                                    position: results[i].geometry.location,
+                                    title: results[i].name
+                                });
+                            }
+                        } else {
+                            alert('Failed: ' + status);
+                            return;
+                        }
+                    });
+                });
+
+
             //地図上の特定の位置をクリックし、markerが表示され、markerをクリックすると情報ウィンドウを表示する記述
             //map.addListener('click', function (e) {
                 //var marker = new google.maps.Marker({
@@ -84,6 +165,7 @@
                     //infoWindow.open(map, marker)
                 //});
             //});
+
             //特定の場所に情報ウィンドウを表示させる
             //infoWindow = new google.maps.InfoWindow({
                 //position: tokyo,
@@ -109,6 +191,7 @@
                     //this.setMap(null);
                 //});
             //});
+
             //marker = new google.maps.Marker({
                 //position: tokyo,
                 //map: map,
@@ -119,6 +202,7 @@
                 //markerがdropする動き
                 //animation: google.maps.Animation.DROP
             //});
+
             //緯度と経度をstring型で表示させるための記述
             //map.addListener('click', function(e) {
                 //console.log(e.latLng.lat());

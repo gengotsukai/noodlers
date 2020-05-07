@@ -61,26 +61,38 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# 会員登録・ログイン/ログアウト機能用のgem
 gem 'devise'
+
+# 管理者機能用のgem
 gem 'activeadmin'
 
+# 画像取り込み用のgem
 gem "refile", require: "refile/rails", github: 'manfe/refile'
-# 画像取り込み
 
+# サイズ調整、画像加工用のgem
 gem 'refile-mini_magick'
-# サイズ調整、画像加工
 
+# ファイル(画像など)アップロード用のgem
 gem 'carrierwave'
+
+# 画像処理(加工)を扱えるためにするgem
 gem 'rmagick'
 
+# サイトのレイアウトに必要なgem
 gem 'bootstrap-sass', '~> 3.3.6'
+
+# railsでjavascriptを使えるようにするgem
 gem 'jquery-rails'
 
+# 環境変数を管理させる用のgem
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
 
+# デバッグ用のgem
 gem 'pry-rails'
 
+# 退会機能（論理削除）用のgem
 gem 'discard'
