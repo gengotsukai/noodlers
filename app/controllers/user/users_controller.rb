@@ -10,7 +10,6 @@ class User::UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
   	@shops = @user.shops
-  	@shop = Shop.new #new shopの新規投稿で必要（保存処理はshopsコントローラー側で実施）
   end
 
   def edit

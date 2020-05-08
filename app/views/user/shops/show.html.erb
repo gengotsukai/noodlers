@@ -60,17 +60,9 @@
 
         <tr>
           <td>
-           <% if @myshop.favorited_by?(current_user) %>
-               <%= link_to user_shop_shop_likes_path(@myshop), method: :delete do %>
-                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <%= @myshop.shop_likes.count %> いいね
-               <% end %>
-           <% else %>
-               <%= link_to user_shop_shop_likes_path(@myshop), method: :post do %>
-                  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-                  <%= @myshop.shop_likes.count %> いいね
-               <% end %>
-           <% end %>
+            <div id="shop_likes_buttons_<%= @myshop.id %>">
+              <%= render partial: 'user/shop_likes/shop_like', locals: { shop: @myshop} %>
+            </div>
           </td>
           <td>コメント数: <%= @myshop.shop_comments.count %></td>
         </tr>

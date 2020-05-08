@@ -1,0 +1,2 @@
+// クラス名が'#shop_likes_buttons_<%= @shop.id %>'の箇所のみrenderで内容を入れ替え
+$('#shop_likes_buttons_<%= @shop.id %>').html("<%= j(render partial: 'user/shop_likes/shop_like', locals: {shop: @shop}) %>");
