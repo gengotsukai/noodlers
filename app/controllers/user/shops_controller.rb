@@ -12,6 +12,7 @@ class User::ShopsController < ApplicationController
   		@myshop = Shop.find(params[:id])
       @shop = Shop.new
       @user = @myshop.user
+      #新しいコメント
       @shop_comment = ShopComment.new
 	 end
 

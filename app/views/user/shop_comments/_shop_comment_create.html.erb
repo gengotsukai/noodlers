@@ -1,0 +1,8 @@
+<%= form_for @shop_comment, url: user_shop_shop_comments_path(@myshop.id), data:{remote: true} do |f| %>
+          <div class="row">
+              <div class="col-sm-12">
+                  <%= f.text_area :opinion, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+              </div>
+          </div>
+          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>

@@ -1,0 +1,18 @@
+<% @myshop.shop_comments.each do |shop_comment| %>
+<table class="table">
+         <tr>
+          <td>
+            <%= render 'shared/userimage', user: shop_comment.user %><br>
+            <%= shop_comment.user.nickname %>
+          </td>
+          <td><%= shop_comment.opinion %></td>
+          <td>
+            <% if shop_comment.user == current_user %>
+              <td><%= link_to "Destroy",user_shop_shop_comments_path(shop_comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, remote: true %></td>
+              <% else %>
+              <td></td>
+            <% end %>
+          </td>
+         </tr>
+</table>
+<% end %>
