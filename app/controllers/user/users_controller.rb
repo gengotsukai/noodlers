@@ -1,9 +1,11 @@
 class User::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :baria_user, only: [:update]
+  PER = 4
 
   def index
-  	@users = User.all #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
+    @users = User.page(params[:page]).per(PER)
+  	#@users = User.all #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
   	@shop = Shop.new #new shopの新規投稿で必要（保存処理はshopsコントローラー側で実施）
   end
 

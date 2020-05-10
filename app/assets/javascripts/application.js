@@ -13,7 +13,7 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -151,7 +151,7 @@
                 });
 
 
-            //地図上の特定の位置をクリックし、markerが表示され、markerをクリックすると情報ウィンドウを表示する記述
+            //地図上の特定の位置をクリックするとmarkerが表示され、markerをクリックすると情報ウィンドウを表示する記述
             //map.addListener('click', function (e) {
                 //var marker = new google.maps.Marker({
                     //position: e.latLng,

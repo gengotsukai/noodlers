@@ -1,10 +1,13 @@
 class User::ShopsController < ApplicationController
-	 def search
+	 PER = 5
+
+   def search
     @shops = Shop.search(params[:search])
    end
 
    def index
-    	@shops = Shop.all
+    	@shops = Shop.page(params[:page]).per(PER)
+      #@shops = Shop.all
     	@shop = Shop.new
 	 end
 

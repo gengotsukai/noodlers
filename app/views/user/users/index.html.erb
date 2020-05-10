@@ -36,6 +36,7 @@
 			<td><%= link_to "Show", user_user_path(current_user), class: 'btn btn-primary btn-block' %></td>
 		</tr>
 		<% end %>
+		<%= paginate @users %>
 	</tbody>
 </table>
 </div>
