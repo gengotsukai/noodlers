@@ -6,9 +6,8 @@
   			<%= submit_tag 'Search', :shop_name => nil %>
 		<% end %>
 
-
-		<%= link_to "店を新たに登録", new_user_shop_path, method: :get, class: "btn btn-primary" %>
-		<h2>Shops index</h2>
+		<h2>店の投稿一覧</h2>
+    <%= link_to "店の新規投稿をする", new_user_shop_path, method: :get, class: "btn btn-primary", style: 'color: white' %>
 		<!--shops一覧 -->
 		<table class="table table-hover table-inverse">
 			<thead>
@@ -47,7 +46,7 @@
 </div>
 
 <div id="content">
-    <h1>現在地周辺のWifiが使えるカフェ</h1>
+    <h1>現在地周辺の麺類系の店(半径3km以内の店を表示します)</h1>
     <div id="map" class="map"></div>
     <ul id="shop-list">
       
@@ -79,7 +78,7 @@ function test2(position) {
 // 現在地の近くにあるwifiのあるカフェを探す
   $.ajax({
     type : "get",
-    url　: "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=<%= ENV['GURUNAVI_API_KEY'] %>&wifi=1&latitude="+lat+"&longitude="+lng+"&range=4&category_l=RSFST20000,RSFST18000",
+    url　: "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=<%= ENV['GURUNAVI_API_KEY'] %>&latitude="+lat+"&longitude="+lng+"&range=5&category_l=RSFST08000",
     dataType : 'json',
     success　: function(json){
       let num_shop = json.rest.length;

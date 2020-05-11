@@ -7,7 +7,6 @@
           <tr class="active">
             <th>ジャンル名</th>
             <th>店名</th>
-            <th>店のコメント数</th>
           </tr>
         </thead>
         <tbody>
@@ -16,12 +15,7 @@
               <td><%= genre.genre_name %></td>
               <td>
                 <% genre.shops.each do |shop| %>
-                  <%= link_to shop.shop_name, user_shop_path(shop), class: "btn btn-primary" %>
-                <% end %>
-              </td>
-              <td>
-                <% genre.shops.each do |shop| %>
-                  コメント数: <%= shop.shop_comments.count %>
+                  <%= link_to shop.shop_name, user_shop_path(shop), class: "btn btn-primary", style: 'color: white' %>
                 <% end %>
               </td>
             </tr>
