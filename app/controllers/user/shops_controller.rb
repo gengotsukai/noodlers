@@ -33,12 +33,10 @@ class User::ShopsController < ApplicationController
    def create
 		  @shop = Shop.new(shop_params) #Shopモデルのテーブルを使用しているのでShopコントローラで保存する。
     	@shop.user_id = current_user.id
-  		if @shop.save! #入力されたデータをdbに保存する。
-  			 redirect_to user_shop_path(@shop.id), flash: { notice: 'You have created shop successfully.' }
+  		if @shop.save #入力されたデータをdbに保存する。
+  			 redirect_to user_shop_path(@shop.id), flash: { notice: '店の新規投稿に成功しました！' }
   		else
-  			 @shops = Shop.all
-      	 @user = current_user
-  			 render :index
+  			 render :new
   		end
   	end
 

@@ -3,6 +3,15 @@ class Shop < ApplicationRecord
 	has_many :shop_likes
 	belongs_to :user
 	belongs_to :genre
+  validates :shop_name, presence: true, length: {maximum: 30}
+  validates :inquiry, presence: true, length: {maximum: 30}
+  validates :address, presence: true, length: {maximum: 50}
+  validates :price_range, length: {maximum: 30}
+  validates :transport, length: {maximum: 40}
+  validates :payment_method, length: {maximum: 30}
+  validates :seats_number, length: {maximum: 20}
+  validates :cigarette, length: {maximum: 20}
+
 
   def favorited_by?(user)
 		shop_likes.where(user_id: user.id).exists?

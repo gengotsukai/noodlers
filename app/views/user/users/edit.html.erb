@@ -1,3 +1,28 @@
+<% if flash[:success] %>
+  <div class="alert1" role="alert">
+    <%= notice %>
+  </div>
+ <% end %>
+
+ <% if flash[:danger] %>
+  <div class="alert1" role="alert">
+    <%= notice %>
+  </div>
+ <% end %>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+
+    <%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:</h2>
+
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="row">
 
 <h2>登録情報編集</h2>

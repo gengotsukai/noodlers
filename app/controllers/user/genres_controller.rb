@@ -13,8 +13,8 @@ class User::GenresController < ApplicationController
 	def create
 		@genre = Genre.new(genre_params)
 		@genre.user_id = current_user.id
-		if  @genre.save!
-      		redirect_to user_genres_path, notice: "ジャンルの作成が完了しました！"
+		if  @genre.save
+      		redirect_to user_genres_path, flash: { notice: "ジャンルの作成が完了しました！" }
     	else
     		@genres = Genre.all
       		render :index
@@ -24,7 +24,7 @@ class User::GenresController < ApplicationController
 	def update
 		@genre = Genre.find(params[:id])
     	if 	@genre.update(genre_params)
-     		redirect_to user_genres_path, notice: "ジャンルの編集が完了しました！"
+     		redirect_to user_genres_path, flash: { notice: "ジャンルの編集が完了しました！" }
     	else
       		render :edit
     	end

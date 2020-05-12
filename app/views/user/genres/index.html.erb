@@ -1,3 +1,22 @@
+<% if flash[:notice] %>
+  <div class="alert1" role="alert">
+    <%= notice %>
+  </div>
+ <% end %>
+
+ <% if @genre.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+
+    <%= pluralize(@genre.errors.count, "error") %> prohibited this obj from being saved:</h2>
+
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="row">
   <h2 class="heading">ジャンル追加・一覧画面</h2>
 

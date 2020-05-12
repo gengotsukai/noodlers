@@ -1,3 +1,16 @@
+<% if @shop.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+
+    <%= pluralize(@shop.errors.count, "error") %> prohibited this obj from being saved:</h2>
+
+    <ul>
+      <% @shop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="row">
   <div class="col-xs-12" style="background-color: white;">
    <%= form_for @shop, url: user_shops_path, method: :post do |f| %>
