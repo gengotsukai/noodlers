@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Genre, type: :model do
 	before do
+        #Factory Botというgemを使い、テスト用に必要な外部の情報(例:userやshopのidなど)を生成するための記述
 		@user = create(:user)
 	end
 
