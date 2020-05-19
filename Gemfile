@@ -86,7 +86,7 @@ gem 'carrierwave'
 gem 'rmagick'
 
 # サイトのレイアウトに必要なgem
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 # railsでjavascriptを使えるようにするgem
 gem 'jquery-rails'
