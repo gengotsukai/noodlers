@@ -108,3 +108,6 @@ gem 'kaminari', '~> 1.2.0'
 
 # kaminariをbootstrap用にカスタマイズするgem
 gem 'kaminari-bootstrap', '~> 3.0.1'
+
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
