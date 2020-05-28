@@ -75,8 +75,8 @@
       </table>
 
       <% if @user == current_user %>
-        <%= link_to "Edit",edit_user_shop_path(@myshop.id), class: "btn-sm btn-success edit_book_#{@myshop.id}" %>
-        <%= link_to "Destroy",user_shop_path(@myshop.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@myshop.id}" %>
+        <%= link_to "編集",edit_user_shop_path(@myshop.id), class: "btn-sm btn-success edit_book_#{@myshop.id}" %>
+        <%= link_to "削除",user_shop_path(@myshop.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@myshop.id}" %>
       <% end %>
 
       <div id="shop_comment_destroy_buttons">
