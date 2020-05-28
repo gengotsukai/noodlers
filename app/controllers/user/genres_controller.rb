@@ -32,8 +32,12 @@ class User::GenresController < ApplicationController
 
 	def destroy
 		@genre = Genre.find(params[:id])
-      	@genre.destroy
-      	redirect_to user_genres_path, flash: { notice: "ジャンルを削除しました！" }
+      	if  @genre.destroy
+      	    redirect_to user_genres_path, flash: { notice: "ジャンルを削除しました！" }
+      	else
+      		@genres = Genre.all
+      		render :index
+      	end
 	end
 
 	def genre_params
