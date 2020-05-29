@@ -104,7 +104,7 @@ gem 'pry-rails'
 gem 'discard'
 
 # ページネーション機能用のgem
-gem 'kaminari', '~> 1.2.0'
+gem 'kaminari', '~> 1.2.1'
 
 # kaminariをbootstrap用にカスタマイズするgem
 gem 'kaminari-bootstrap', '~> 3.0.1'
