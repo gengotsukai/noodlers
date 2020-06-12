@@ -20,4 +20,13 @@
 ## 設計書
 
 ### 機能一覧
-https://docs.google.com/spreadsheets/d/1XnXtVtH4SeWf9bYAU4XDWV0K48rMV-VIFaQgy3t3Fls/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1XnXtVtH4SeWf9bYAU4XDWV0K48rMV-VIFaQgy3t3Fls/edit#gid=0
+
+### WBS
+https://docs.google.com/spreadsheets/d/1yPEKDO9dVTKahKgtC9-miFtrO9vz-XaeQIIrVR8b9tE/edit#gid=936539047
+
+### テーブル定義書
+https://docs.google.com/spreadsheets/d/10tvPfcTSv6V-VWAFDyN4NCesp53jZ4VzhZJakCIRY4E/edit#gid=1207612855
+
+### ER図
+https://app.diagrams.net/#G1PhAz742YQaqiqnNZ_H4NJ7H3pMq38ByZ
