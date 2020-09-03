@@ -17,6 +17,49 @@
 ### 主な利用シーン
 自分が行った店で他の人にお勧めしたい時、現在気になっている店のリストアップ、過去に行ったことのある店の細かな情報の掲載（お勧めのメニュー、価格帯、アクセスの良さなど）など
 
+### 開発環境
+- OS
+Linux(Ubuntu)
+
+- 言語
+HTML,CSS,JavaScript,Ruby,SQL
+
+- フレームワーク
+Ruby on Rails
+Bootstrap
+Google Map API
+ぐるなびAPI
+
+- Railsライブラリ
+Devise
+ActiveAdmin
+Refile
+Refile-mini_magick
+Carrierwave
+Rmagick
+Bootstrap-sass
+Jquery-rails
+Dotenv-rails
+Pry-rails
+Discard
+Kaminari
+Kaminari-bootstrap
+
+- JSライブラリ
+jQuery
+
+- インフラ
+AWS(EC2,RDS,EIP)
+
+- テストフレームワーク
+RSpec
+
+- その他ツールなど
+Vagrant
+VirtualBox
+Slack
+お名前.com
+
 ## 設計書
 
 ### 機能一覧
